@@ -1,15 +1,39 @@
-Source: template-repository
-Section: unknown
+Source: rust-no-panic
+Section: rust
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper (>= 11),
+ dh-cargo (>= 18),
+ cargo:native <!nocheck>,
+ rustc:native <!nocheck>,
+ libstd-rust-dev <!nocheck>,
+ librust-proc-macro2-1+default-dev <!nocheck>,
+ librust-quote-1+default-dev <!nocheck>,
+ librust-syn-1+default-dev <!nocheck>,
+ librust-syn-1+full-dev <!nocheck>
+Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+Uploaders:
+ kpcyrd <git@rxv.cc>
+Standards-Version: 4.2.0
+Vcs-Git: https://salsa.debian.org/rust-team/debcargo-conf.git [src/no-panic]
+Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/no-panic
 
-Package: template-repository
+Package: librust-no-panic-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-proc-macro2-1+default-dev,
+ librust-quote-1+default-dev,
+ librust-syn-1+default-dev,
+ librust-syn-1+full-dev
+Provides:
+ librust-no-panic+default-dev (= ${binary:Version}),
+ librust-no-panic-0-dev (= ${binary:Version}),
+ librust-no-panic-0+default-dev (= ${binary:Version}),
+ librust-no-panic-0.1-dev (= ${binary:Version}),
+ librust-no-panic-0.1+default-dev (= ${binary:Version}),
+ librust-no-panic-0.1.13-dev (= ${binary:Version}),
+ librust-no-panic-0.1.13+default-dev (= ${binary:Version})
+Description: Attribute macro to require a function can't ever panic - Rust source code
+ This package contains the source for the Rust no-panic crate, packaged by
+ debcargo for use with cargo and dh-cargo.
