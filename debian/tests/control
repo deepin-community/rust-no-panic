@@ -1,0 +1,7 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test no-panic 0.1.13 --all-targets --all-features
+Depends: dh-cargo (>= 18), librust-tempfile-3+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test no-panic 0.1.13 --all-targets --no-default-features
+Depends: dh-cargo (>= 18), librust-tempfile-3+default-dev, librust-no-panic-dev
+Restrictions: allow-stderr, skip-not-installable, flaky
